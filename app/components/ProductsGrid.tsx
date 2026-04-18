@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { allProducts, Product } from "../products";
 import ProductCard from "./ProductCard";
 import QuickViewModal from "./QuickViewModal";
@@ -8,16 +8,22 @@ import QuickViewModal from "./QuickViewModal";
 export default function ProductsGrid() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  // 👇 Show More state
   const [visibleCount, setVisibleCount] = useState(8);
   const [loading, setLoading] = useState(false);
 
-  const visibleProducts = allProducts.slice(0, visibleCount);
+  // 🚀 memoized (prevents unnecessary recalculation)
+  const visibleProducts = useMemo(() => {
+    return allProducts.slice(0, visibleCount);
+  }, [visibleCount]);
+
+  const hasMore = visibleCount < allProducts.length;
 
   const handleShowMore = async () => {
+    if (loading || !hasMore) return;
+
     setLoading(true);
 
-    await new Promise((res) => setTimeout(res, 500));
+    await new Promise((res) => setTimeout(res, 400));
 
     setVisibleCount((prev) => prev + 8);
 
@@ -27,7 +33,8 @@ export default function ProductsGrid() {
   return (
     <>
       {/* GRID */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 p-3 sm:p-6">
+
         {visibleProducts.map((p) => (
           <ProductCard
             key={p.id}
@@ -35,22 +42,29 @@ export default function ProductsGrid() {
             onQuickView={setSelectedProduct}
           />
         ))}
+
       </div>
 
       {/* SHOW MORE */}
-      {visibleCount < allProducts.length && (
+      {hasMore && (
         <div className="flex justify-center pb-10">
+
           <button
             onClick={handleShowMore}
             disabled={loading}
-            className="px-8 py-3 bg-black text-white rounded-full"
+            className={`px-8 py-3 rounded-full transition ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-black text-white hover:opacity-80"
+            }`}
           >
             {loading ? "Loading..." : "Show More"}
           </button>
+
         </div>
       )}
 
-      {/* QUICK VIEW MODAL */}
+      {/* QUICK VIEW */}
       {selectedProduct && (
         <QuickViewModal
           product={selectedProduct}

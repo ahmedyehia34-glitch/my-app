@@ -28,48 +28,48 @@ export default function ProductCard({
   };
 
   return (
-    <div className="group relative bg-white rounded-2xl overflow-hidden shadow-md">
+    <div className="group relative bg-white rounded-2xl overflow-hidden shadow-md w-full">
 
-      {/* IMAGE */}
-      <div className="relative w-full h-[450px] overflow-hidden">
+      {/* IMAGE CONTAINER */}
+      <div className="relative w-full overflow-hidden h-[520px] sm:h-[450px]">
 
-        {/* CLICKABLE IMAGE */}
         <Link href={`/product/${product.id}`} className="block w-full h-full">
+
           <Image
             src={product.images[0]}
             alt={product.name}
             fill
-            sizes="100vw"
             className="object-cover group-hover:scale-105 transition duration-500"
+            sizes="(max-width: 768px) 90vw, (max-width: 1200px) 40vw, 25vw"
+            loading="lazy"
+            quality={75}
           />
+
         </Link>
 
         {/* overlay */}
-        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition pointer-events-none" />
+        <div className="absolute inset-0 bg-black/10 sm:bg-black/20" />
 
         {/* ICONS */}
-        <div className="absolute top-3 right-3 flex flex-col gap-2 z-30">
+        <div className="absolute top-3 right-3 flex flex-col gap-2 z-40 opacity-100 translate-x-0 sm:opacity-0 sm:translate-x-6 sm:group-hover:opacity-100 sm:group-hover:translate-x-0 transition-all duration-300">
 
           <button
             onClick={() => toggleWishlist(product)}
-            className="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow
-            translate-x-10 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition"
+            className="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow"
           >
             <FaHeart className={isLiked(product.id) ? "text-red-500" : "text-gray-400"} />
           </button>
 
           <button
             onClick={() => onQuickView?.(product)}
-            className="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow
-            translate-x-10 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition delay-75"
+            className="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow"
           >
             <FaEye />
           </button>
 
           <button
             onClick={handleAddToCart}
-            className="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow
-            translate-x-10 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition delay-150"
+            className="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow"
           >
             {loading ? (
               <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
@@ -81,17 +81,15 @@ export default function ProductCard({
         </div>
 
         {/* SELECT OPTIONS */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[85%]
-          translate-y-10 opacity-0
-          group-hover:translate-y-0 group-hover:opacity-100
-          transition duration-300 z-20"
-        >
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] opacity-100 translate-y-0 sm:opacity-0 sm:translate-y-6 sm:group-hover:opacity-100 sm:group-hover:translate-y-0 transition-all duration-300 z-30">
+
           <button
             onClick={() => onQuickView?.(product)}
             className="w-full bg-white py-3 rounded-full font-medium shadow-lg"
           >
             Select Options
           </button>
+
         </div>
 
       </div>
@@ -99,7 +97,7 @@ export default function ProductCard({
       {/* INFO */}
       <div className="p-4 text-center">
         <h2 className="font-semibold">{product.name}</h2>
-        <p className="text-gray-500">{product.price} EGP</p>
+        <p className="text-gray-500">LE {product.price}</p>
       </div>
 
     </div>

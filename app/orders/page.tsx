@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState<any[]>([]);
@@ -17,7 +18,6 @@ export default function OrdersPage() {
         }
 
         const parsed = JSON.parse(stored);
-
         setOrders(Array.isArray(parsed) ? parsed : []);
       } catch (error) {
         console.log("Orders parse error:", error);
@@ -46,15 +46,15 @@ export default function OrdersPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-10 h-10 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-10 h-10 border-4 border-black border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white p-10">
+    <div className="min-h-screen bg-white p-6 md:p-10">
 
-      <h1 className="text-2xl font-bold mb-8 py-6">My Orders</h1>
+      <h1 className="text-2xl font-bold mb-8">My Orders</h1>
 
       <div className="space-y-8">
 
@@ -64,11 +64,11 @@ export default function OrdersPage() {
           orders.map((order) => (
             <div
               key={order.id}
-              className="border rounded-xl p-6 shadow-sm"
+              className="border rounded-xl p-4 md:p-6 shadow-sm"
             >
 
               {/* HEADER */}
-              <div className="flex justify-between items-center mb-4">
+              <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-4">
 
                 <div>
                   <h2 className="font-semibold">
@@ -83,7 +83,7 @@ export default function OrdersPage() {
                 </div>
 
                 <span
-                  className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(
+                  className={`px-3 py-1 rounded-full text-sm font-medium w-fit ${getStatusColor(
                     order.status || "Pending"
                   )}`}
                 >
@@ -98,30 +98,45 @@ export default function OrdersPage() {
                 {order.items?.map((item: any, index: number) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between border-b pb-3"
+                    className="flex items-center justify-between border-b pb-3 gap-3"
                   >
 
                     <div className="flex items-center gap-4">
 
-                      <img
-                        src={
-                          item.image ||
-                          item.images?.[0] ||
-                          "https://via.placeholder.com/80"
-                        }
-                        className="w-16 h-16 object-cover rounded-lg border"
-                      />
+                      {/* 🖼 IMAGE SAFE FIX */}
+                      <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-lg overflow-hidden border bg-gray-100 shrink-0">
 
+                        {item.images?.[0] || item.image ? (
+                          <Image
+                            src={item.images?.[0] || item.image}
+                            alt={item.name}
+                            fill
+                            className="object-cover"
+                            sizes="64px"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-[10px] text-gray-400">
+                            No Image
+                          </div>
+                        )}
+
+                      </div>
+
+                      {/* INFO */}
                       <div>
-                        <p className="font-medium">{item.name}</p>
-                        <p className="text-sm text-gray-500">
+                        <p className="font-medium text-sm md:text-base">
+                          {item.name}
+                        </p>
+
+                        <p className="text-xs md:text-sm text-gray-500">
                           Qty: {item.quantity}
                         </p>
                       </div>
 
                     </div>
 
-                    <p className="font-semibold">
+                    {/* PRICE */}
+                    <p className="font-semibold text-sm md:text-base">
                       {(item.price * item.quantity).toFixed(2)} EGP
                     </p>
 

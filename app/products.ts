@@ -1,5 +1,3 @@
-
-
 export type Product = {
   id: number;
   name: string;
@@ -7,27 +5,179 @@ export type Product = {
   images: string[];
   description: string;
   category?: string;
+
+  // 🆕 (اختياري لتحسين الأداء لاحقًا)
+  priority?: boolean;
 };
 
+// 💡 ملاحظة مهمة:
+// يفضل تحويل الصور لاحقًا إلى .webp بدل .jpg لتقليل الحجم جدًا
+
 export const allProducts: Product[] = [
-  { id: 1, name: "Gamila Kaftan", price: 2750, images: ["/images/product1-1.jpg","/images/product1-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 2, name: "Bahia Kaftan", price: 2800, images: ["/images/product2-1.jpg","/images/product2-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 3, name: "Nabila Kaftan", price: 3200, images: ["/images/product3-1.jpg","/images/product3-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 4, name: "Nadia Kaftan", price: 2500, images: ["/images/product4-1.jpg","/images/product4-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 5, name: "Zahra Kaftan", price: 1100, images: ["/images/product5-1.jpg","/images/product5-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 6, name: "Moshira Kaftan", price: 2130, images: ["/images/product6-1.jpg","/images/product6-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 7, name: "Samia Kaftan", price: 2550, images: ["/images/product7-1.jpg","/images/product7-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 8, name: "Shadia Kaftan", price: 2540, images: ["/images/product8-1.jpg","/images/product8-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 9, name: "Camilia Kaftan", price: 3140, images: ["/images/product1-1.jpg","/images/product1-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 10, name: "Fatima Kaftan", price: 2070, images: ["/images/product2-1.jpg","/images/product2-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 11, name: "RoRA Kaftan", price: 2120, images: ["/images/product3-1.jpg","/images/product3-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 12, name: "Silia Kaftan", price: 2555, images: ["/images/product4-1.jpg","/images/product4-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 13, name: "Salwa Kaftan", price: 2530, images: ["/images/product5-1.jpg","/images/product5-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 14, name: "Camila", price: 2160, images: ["/images/product6-1.jpg","/images/product6-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 15, name: "Salwa", price: 2665, images: ["/images/product7-1.jpg","/images/product7-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 16, name: "Samia", price: 2180, images: ["/images/product8-1.jpg","/images/product8-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 17, name: "Miral", price: 2200, images: ["/images/product1-1.jpg","/images/product1-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 18, name: "Mirna", price: 2245, images: ["/images/product2-1.jpg","/images/product2-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 19, name: "Rahma Kaftan", price: 2150, images: ["/images/product3-1.jpg","/images/product3-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." },
-  { id: 20, name: "Samia", price: 2190, images: ["/images/product4-1.jpg","/images/product4-2.jpg"], description: "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look." }
+  {
+    id: 1,
+    name: "Gamila Kaftan",
+    price: 2750,
+    priority: true,
+    images: ["/images/product1-1.webp", "/images/product1-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look.",
+  },
+  {
+    id: 2,
+    name: "Bahia Kaftan",
+    price: 2800,
+    priority: true,
+    images: ["/images/product2-1.webp", "/images/product2-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look.",
+  },
+  {
+    id: 3,
+    name: "Nabila Kaftan",
+    price: 3200,
+    priority: true,
+    images: ["/images/product3-1.webp", "/images/product3-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look.",
+  },
+  {
+    id: 4,
+    name: "Nadia Kaftan",
+    price: 2500,
+    priority: true,
+    images: ["/images/product4-1.webp", "/images/product4-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look.",
+  },
+  {
+    id: 5,
+    name: "Zahra Kaftan",
+    price: 1100,
+    images: ["/images/product5-1.webp", "/images/product5-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look.",
+  },
+  {
+    id: 6,
+    name: "Moshira Kaftan",
+    price: 2130,
+    images: ["/images/product6-1.webp", "/images/product6-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look.",
+  },
+  {
+    id: 7,
+    name: "Samia Kaftan",
+    price: 2550,
+    images: ["/images/product7-1.webp", "/images/product7-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look.",
+  },
+  {
+    id: 8,
+    name: "Shadia Kaftan",
+    price: 2540,
+    images: ["/images/product8-1.webp", "/images/product8-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette, highlighted by embroidered Arabic letter detailing and finished with a matching belt for a flattering, adjustable fit. Crafted to offer all-day comfort while maintaining a refined, polished look.",
+  },
+
+  // باقي المنتجات (بدون priority عشان أول صفحة تكون أسرع)
+  {
+    id: 9,
+    name: "Camilia Kaftan",
+    price: 3140,
+    images: ["/images/product1-1.webp", "/images/product1-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette.",
+  },
+  {
+    id: 10,
+    name: "Fatima Kaftan",
+    price: 2070,
+    images: ["/images/product2-1.webp", "/images/product2-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette.",
+  },
+  {
+    id: 11,
+    name: "RoRA Kaftan",
+    price: 2120,
+    images: ["/images/product3-1.webp", "/images/product3-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette.",
+  },
+  {
+    id: 12,
+    name: "Silia Kaftan",
+    price: 2555,
+    images: ["/images/product4-1.webp", "/images/product4-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette.",
+  },
+  {
+    id: 13,
+    name: "Salwa Kaftan",
+    price: 2530,
+    images: ["/images/product5-1.webp", "/images/product5-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette.",
+  },
+  {
+    id: 14,
+    name: "Camila",
+    price: 2160,
+    images: ["/images/product6-1.webp", "/images/product6-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette.",
+  },
+  {
+    id: 15,
+    name: "Salwa",
+    price: 2665,
+    images: ["/images/product7-1.webp", "/images/product7-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette.",
+  },
+  {
+    id: 16,
+    name: "Samia",
+    price: 2180,
+    images: ["/images/product8-1.webp", "/images/product8-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette.",
+  },
+  {
+    id: 17,
+    name: "Miral",
+    price: 2200,
+    images: ["/images/product1-1.webp", "/images/product1-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette.",
+  },
+  {
+    id: 18,
+    name: "Mirna",
+    price: 2245,
+    images: ["/images/product2-1.webp", "/images/product2-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette.",
+  },
+  {
+    id: 19,
+    name: "Rahma Kaftan",
+    price: 2150,
+    images: ["/images/product3-1.webp", "/images/product3-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette.",
+  },
+  {
+    id: 20,
+    name: "Samia",
+    price: 2190,
+    images: ["/images/product4-1.webp", "/images/product4-2.webp"],
+    description:
+      "A sophisticated suede kaftan designed with a flowing, elegant silhouette.",
+  },
 ];
